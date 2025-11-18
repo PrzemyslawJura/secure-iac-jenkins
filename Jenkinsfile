@@ -34,10 +34,10 @@ pipeline {
           # terraform - prefer preinstalled on agent; install if missing (requires apt/unzip)
           if ! command -v terraform >"${NULL_DEVICE}" 2>&1; then
             echo "Terraform not found - installing"
-            apt-get update -y
-            apt-get install -y wget unzip
-            wget -q https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
-            unzip terraform_1.6.6_linux_amd64.zip -d /usr/local/bin/
+            sudo apt-get update -y
+            sudo apt-get install -y wget unzip
+            sudo wget -q https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
+            sudo unzip terraform_1.6.6_linux_amd64.zip -d /usr/local/bin/
             terraform -version
           fi
 
