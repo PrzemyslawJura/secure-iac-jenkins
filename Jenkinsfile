@@ -29,7 +29,7 @@ pipeline {
     stage('Prepare Tools') {
       steps {
         echo "🧰 Ensure Terraform, tfsec and checkov are available on agent"
-        sh '''bash -c "
+        sh '''
           set -e
           # terraform - prefer preinstalled on agent; install if missing (requires apt/unzip)
           if ! command -v terraform >"${NULL_DEVICE}" 2>&1; then
@@ -45,7 +45,7 @@ pipeline {
           if ! command -v pip3 >"${NULL_DEVICE}" 2>&1; then
             apt-get install -y python3-pip
           fi
-        "'''
+        '''
       }
     }
 
